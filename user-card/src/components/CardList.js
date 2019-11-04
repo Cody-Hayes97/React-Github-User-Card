@@ -1,7 +1,16 @@
 import React from "react";
 import axios from "axios";
-import Card from "./Card";
+import UserCard from "./Card";
 // import FollowerCard from "./FollowerCard";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button
+} from "reactstrap";
 
 class CardList extends React.Component {
   state = {
@@ -83,10 +92,17 @@ class CardList extends React.Component {
     console.log("stateful follows: ", this.state.followers);
     return (
       <div>
-        <button onClick={this.handleFollowers}>See Codys Followers</button>
+        <Button
+          style={{
+            margin: "1%"
+          }}
+          onClick={this.handleFollowers}
+        >
+          See Codys Followers
+        </Button>
 
         {this.state.users.map(user => (
-          <Card
+          <UserCard
             avatar_url={user.avatar_url}
             key={user.id}
             name={user.login}
@@ -95,7 +111,16 @@ class CardList extends React.Component {
           />
         ))}
 
-        <button onClick={this.goHome}>Home</button>
+        <Button
+          style={{
+            width: "100%",
+            marginTop: "2%",
+            textAlign: "center"
+          }}
+          onClick={this.goHome}
+        >
+          Home
+        </Button>
         <div>
           {/* {this.state.followers.map(follower => (
             <FollowerCard
